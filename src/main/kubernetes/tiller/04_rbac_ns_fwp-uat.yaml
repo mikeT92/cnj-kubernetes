@@ -1,0 +1,43 @@
+# 04_rbac_ns_fwp-uat.yml
+# ----------------------------------------------------------------------------
+# Allows Tiller service account to deploy to tenant's user acceptance test
+# namespace
+# ----------------------------------------------------------------------------
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: deploy-to-namespace
+  labels:
+    app.kubernetes.io/name: deploy-to-namespace
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/part-of: hmfwpcnj
+    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/tier: security
+    app.kubernetes.io/stage: user-acceptance-test
+  namespace: fwp-uat
+rules:
+  - apiGroups: ["", "batch", "extensions", "apps"]
+    resources: ["*"]
+    verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tiller-deploy-to-namespace
+  namespace: fwp-uat
+  labels:
+    app.kubernetes.io/name: tiller-deploy-to-namespace
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/part-of: hmfwpcnj
+    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/tier: security
+    app.kubernetes.io/stage: user-acceptance-test
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: fwp-system
+roleRef:
+  kind: Role
+  name: deploy-to-namespace
+  apiGroup: rbac.authorization.k8s.io
