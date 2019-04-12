@@ -46,3 +46,8 @@ hs_err_pid*
 # MAVEN build artifacts
 target/
 
+# Secrets
+*.pem
+*.crt
+*.cert.srl
+

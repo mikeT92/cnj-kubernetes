@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  namespace: fwp-sys-tiller
+  name: tiller-allow-inbound-traffic
+  labels:
+    app.kubernetes.io/name: tiller-allow-inbound-traffic
+    app.kubernetes.io/component: network
+    app.kubernetes.io/part-of: hmfwpcnj
+    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/tier: admin-plane
+    app.kubernetes.io/stage: devops
+spec:
+  policyTypes:
+  - Ingress
+  ingress:
+  - ports:
+    - protocol: TCP
+      port: 44134
+    - protocol: TCP
+      port: 44135
+  podSelector:
+    matchLabels:
+      app: helm
+      name: tiller
+
