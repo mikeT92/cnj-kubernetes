@@ -10,11 +10,11 @@ metadata:
   labels:
     app.kubernetes.io/name: deploy-to-namespace
     app.kubernetes.io/component: rbac
-    app.kubernetes.io/part-of: hmfwpcnj
+    app.kubernetes.io/part-of: cloudtrain
     app.kubernetes.io/managed-by: kubectl
     app.kubernetes.io/tier: admin-plane
     app.kubernetes.io/stage: devops
-  namespace: fwp-sys-tiller
+  namespace: sys-tiller
 rules:
   - apiGroups: ["", "batch", "extensions", "apps"]
     resources: ["*"]
@@ -24,18 +24,18 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tiller-deploy-to-namespace
-  namespace: fwp-sys-tiller
+  namespace: sys-tiller
   labels:
     app.kubernetes.io/name: tiller-deploy-to-namespace
     app.kubernetes.io/component: rbac
-    app.kubernetes.io/part-of: hmfwpcnj
+    app.kubernetes.io/part-of: cloudtrain
     app.kubernetes.io/managed-by: kubectl
     app.kubernetes.io/tier: admin-plane
     app.kubernetes.io/stage: devops
 subjects:
   - kind: ServiceAccount
     name: tiller
-    namespace: fwp-sys-tiller
+    namespace: sys-tiller
 roleRef:
   kind: ClusterRole
   name: deploy-to-namespace

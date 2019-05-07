@@ -2,12 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  namespace: fwp-sys-tiller
+  namespace: sys-tiller
   name: tiller-allow-inbound-traffic
   labels:
     app.kubernetes.io/name: tiller-allow-inbound-traffic
     app.kubernetes.io/component: network
-    app.kubernetes.io/part-of: hmfwpcnj
+    app.kubernetes.io/part-of: cloudtrain
     app.kubernetes.io/managed-by: kubectl
     app.kubernetes.io/tier: admin-plane
     app.kubernetes.io/stage: devops

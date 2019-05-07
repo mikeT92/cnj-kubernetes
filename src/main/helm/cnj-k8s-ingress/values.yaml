@@ -201,4 +201,4 @@ traefik:
   #     dialTimeout: 30s
   #     responseHeaderTimeout: 0s
   kubernetes:
-    namespaces: ["fwp-sys-logging", "fwp-sys-monitoring", "kube-system", "kube-public", "default", "fwp-int", "fwp-uat", "fwp-prod"]
+    namespaces: ["sys-ingress", "sys-auth", "sys-logging", "sys-monitoring", "kube-system", "kube-public", "default", "int", "uat", "prod"]
