@@ -203,6 +203,7 @@ keycloak:
       ## Enable PostgreSQL persistence using Persistent Volume Claims.
       ##
       enabled: true
+      size: 100Mi
 
   test:
     enabled: false
